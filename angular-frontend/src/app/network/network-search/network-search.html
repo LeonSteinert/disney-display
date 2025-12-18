@@ -1,0 +1,81 @@
+<div class="wrapper">
+  <div class="navigation-bar"></div>
+  <div class="content">
+    @if (loading) {
+      Laden...
+    } @else {
+      <div class="table-group">
+        <div class="headline">
+          Navigation
+        </div>
+        <div class="table">
+          <div class="row clickable" routerLink="/">
+            <div class="label">Zurück</div>
+            <div class="value">></div>
+          </div>
+        </div>
+      </div>
+
+      @for (network of networks; track network.bssid) {
+        <div class="table-group">
+          <div class="table">
+            <div class="row">
+              <div class="label">Netzwerkname</div>
+              <div class="value">{{ network.ssid }}</div>
+            </div>
+            <div class="row">
+              <div class="label">BSSID</div>
+              <div class="value">{{ network.bssid }}</div>
+            </div>
+            <div class="row">
+              <div class="label">Qualität</div>
+              <div class="value">{{ network.quality }}</div>
+            </div>
+            <div class="row">
+              <div class="label">Channel</div>
+              <div class="value">{{ network.channel }}</div>
+            </div>
+            <div class="row">
+              <div class="label">Frequenz</div>
+              <div class="value">{{ network.security }}</div>
+            </div>
+            <div class="row">
+              <div class="label">Mac-Adresse</div>
+              <div class="value">{{ network.mac }}</div>
+            </div>
+            <div class="row">
+              <div class="label">Modus</div>
+              <div class="value">{{ network.mode }}</div>
+            </div>
+            <div class="row clickable" (click)="selectNetwork(network)">
+              <div class="label">Verbinden</div>
+              <div class="value">></div>
+            </div>
+          </div>
+        </div>
+      }
+    }
+
+    @if (showPopUp) {
+      <div class="popup">
+        <div class="close-button" (click)="closePopUp()">x</div>
+        <div class="table-group">
+          <div class="table">
+            <div class="row">
+              <div class="label">Netzwerkname</div>
+              <div class="value">{{ selectedNetwork?.ssid ?? 'N/A' }}</div>
+            </div>
+            <div class="row">
+              <div class="label">Passwort</div>
+              <input class="value" [(ngModel)]="password" type="password" placeholder="Passwort eingeben...">
+            </div>
+            <div class="row clickable" (click)="connectNetwork()">
+              <div class="label">Verbinden</div>
+              <div class="value">></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

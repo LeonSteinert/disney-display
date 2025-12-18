@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('/fonts/OpenSans-VariableFont_wdth,wght.ttf') format('truetype');
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'OpenSans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}

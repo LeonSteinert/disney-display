@@ -1,0 +1,57 @@
+<div class="wrapper">
+  <div class="navigation-bar"></div>
+  <div class="content">
+    <div class="table-group">
+      <div class="headline">
+        Navigation
+      </div>
+      <div class="table">
+        <div class="row clickable" routerLink="/">
+          <div class="label">Zurück</div>
+          <div class="value">></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-group">
+      <div class="headline">
+        Netzwerk-Informationen
+      </div>
+      <div class="table">
+        <div class="row">
+          <div class="label">Aktuelles WLAN</div>
+          <div class="value">192.168.178.17</div>
+        </div>
+        <div class="row">
+          <div class="label">MAC-Adresee</div>
+          <div class="value">192.168.178.17</div>
+        </div>
+        <div class="row">
+          <div class="label">Software-Version</div>
+          <div class="value">1.0.0</div>
+        </div>
+        <div class="row">
+          <div class="label">Aktueller Modus</div>
+          <div class="value">Verbleibende Tage</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-group">
+      <div class="headline">
+        Netzwerk-Aktionen
+      </div>
+      <div class="table">
+        <div class="row clickable" routerLink="/frontend/network/search">
+          <div class="label">Netzwerk-Suchen</div>
+          <div class="value">></div>
+        </div>
+        <div class="row clickable" (click)="resetNetwork()">
+          <div class="label">Netzwerk zurücksetzen</div>
+          <div class="value">></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
