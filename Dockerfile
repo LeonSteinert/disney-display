@@ -30,4 +30,4 @@ ENV PYTHONPATH="/app/python/lib:${PYTHONPATH}"
 EXPOSE 3000
 
 # Start the Node.js application
-CMD ["sh", "-c", "cd /var/disney-display && npm i && npm run build && npm run start:prod"]
+CMD ["sh", "-c", "cd /var/disney-display/angular-frontend && npm i && npm run build && cd /var/disney-display && npm i && npm run build && npm run start:prod"]

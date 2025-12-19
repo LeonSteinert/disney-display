@@ -35,28 +35,28 @@ class AppService {
 
     if (currentStringLength > 3) {
       await shell.exec(
-        `python3 /var/disney-raspberrypi-display/python/examples/show-wait-time-four-digits.py ${current}`,
+        `python3 /var/disney-display/python/examples/show-wait-time-four-digits.py ${current}`,
         { async: true },
       );
     } else if (currentStringLength > 2) {
       await shell.exec(
-        `python3 /var/disney-raspberrypi-display/python/examples/show-wait-time-three-digits.py ${current}`,
+        `python3 /var/disney-display/python/examples/show-wait-time-three-digits.py ${current}`,
         { async: true },
       );
     } else if (currentStringLength > 1) {
       await shell.exec(
-        `python3 /var/disney-raspberrypi-display/python/examples/show-wait-time-two-digits.py ${current}`,
+        `python3 /var/disney-display/python/examples/show-wait-time-two-digits.py ${current}`,
         { async: true },
       );
     } else {
       if (current === 1) {
         await shell.exec(
-          `python3 /var/disney-raspberrypi-display/python/examples/show-wait-time-single.py ${current}`,
+          `python3 /var/disney-display/python/examples/show-wait-time-single.py ${current}`,
           { async: true },
         );
       } else {
         await shell.exec(
-          `python3 /var/disney-raspberrypi-display/python/examples/show-wait-time-one-digit.py ${current}`,
+          `python3 /var/disney-display/python/examples/show-wait-time-one-digit.py ${current}`,
           { async: true },
         );
       }
@@ -72,28 +72,28 @@ class AppService {
 
     if (currentStringLength > 3) {
       await shell.exec(
-        `python3 /var/disney-raspberrypi-display/python/examples/show-remaining-days-four-digits.py ${remaining}`,
+        `python3 /var/disney-display/python/examples/show-remaining-days-four-digits.py ${remaining}`,
         { async: true },
       );
     } else if (currentStringLength > 2) {
       await shell.exec(
-        `python3 /var/disney-raspberrypi-display/python/examples/show-remaining-days-three-digits.py ${remaining}`,
+        `python3 /var/disney-display/python/examples/show-remaining-days-three-digits.py ${remaining}`,
         { async: true },
       );
     } else if (currentStringLength > 1) {
       await shell.exec(
-        `python3 /var/disney-raspberrypi-display/python/examples/show-remaining-days-two-digits.py ${remaining}`,
+        `python3 /var/disney-display/python/examples/show-remaining-days-two-digits.py ${remaining}`,
         { async: true },
       );
     } else {
       if (remaining === 1) {
         await shell.exec(
-          `python3 /var/disney-raspberrypi-display/python/examples/show-remaining-days-single.py ${remaining}`,
+          `python3 /var/disney-display/python/examples/show-remaining-days-single.py ${remaining}`,
           { async: true },
         );
       } else {
         await shell.exec(
-          `python3 /var/disney-raspberrypi-display/python/examples/show-remaining-days-one-digit.py ${remaining}`,
+          `python3 /var/disney-display/python/examples/show-remaining-days-one-digit.py ${remaining}`,
           { async: true },
         );
       }
@@ -110,7 +110,7 @@ class AppService {
    */
   async showDisneyLogo(): Promise<void> {
     await shell.exec(
-      `python3 /var/disney-raspberrypi-display/python/examples/show-disney-logo.py`,
+      `python3 /var/disney-display/python/examples/show-disney-logo.py`,
       { async: true },
     );
   }
@@ -140,7 +140,7 @@ class AppService {
       console.log(localIp);
 
       await shell.exec(
-        `python3 /var/disney-raspberrypi-display/python/examples/show-wifi-connection-successful.py ${localIp}`,
+        `python3 /var/disney-display/python/examples/show-wifi-connection-successful.py ${localIp}`,
         { async: true },
       );
 
@@ -150,7 +150,7 @@ class AppService {
       };
     } catch {
       await shell.exec(
-        `python3 /var/disney-raspberrypi-display/python/examples/show-wifi-connection-failed.py`,
+        `python3 /var/disney-display/python/examples/show-wifi-connection-failed.py`,
         { async: true },
       );
 
@@ -168,11 +168,11 @@ class AppService {
 
   async resetWifi() {
     await shell.exec(
-      `python3 /var/disney-raspberrypi-display/python/examples/show-wifi-hotspot.py`,
+      `python3 /var/disney-display/python/examples/show-wifi-hotspot.py`,
       { async: true },
     );
 
-    await shell.exec(`bash /var/disney-raspberrypi-display/wifi-hotspot-2.sh`, {
+    await shell.exec(`bash /var/disney-display/wifi-hotspot-2.sh`, {
       async: true,
     });
   }
