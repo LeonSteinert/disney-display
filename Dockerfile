@@ -14,21 +14,46 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     libopenjp2-7 \
     libtiff6 \
-    libatlas-base-dev \
-    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
+# Install Python dependencies (setuptools needed for node-gyp with Python 3.12+)
 RUN pip3 install \
+    setuptools \
     Pillow \
     spidev \
     RPi.GPIO \
     gpiozero
 
+# Set working directory
+WORKDIR /app
+
+# Copy package files first for better caching
+COPY package*.json ./
+
+# Install Node.js dependencies
+RUN npm ci
+
+# Copy source code
+COPY . .
+
+# Build NestJS application
+RUN npm run build
+
+RUN cd angular-frontend
+
+RUN npm ci
+
+RUN npm run build
+
+COPY /app /var/disney-frontend
+
+WORKDIR /var/disney-frontend
+
 # Set PYTHONPATH so Python can find the waveshare library
 ENV PYTHONPATH="/app/python/lib:${PYTHONPATH}"
 
-# Expose port (adjust if your NestJS app uses a different port)
+# Expose port
 EXPOSE 3000
 
 # Start the Node.js application
-CMD ["sh", "-c", "node dist/main"]
+CMD ["node", "dist/main"]
