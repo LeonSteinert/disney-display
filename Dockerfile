@@ -31,4 +31,4 @@ ENV PYTHONPATH="/app/python/lib:${PYTHONPATH}"
 EXPOSE 3000
 
 # Start the Node.js application
-CMD ["sh", "-c", "npm run start:prod"]
+CMD ["sh", "-c", "node dist/main"]
