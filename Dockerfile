@@ -6,6 +6,7 @@ FROM node:22-bookworm-slim AS base
 # Install Python 3, build tools and required system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 \
+    git \
     python3-pip \
     python3-dev \
     python3-venv \
